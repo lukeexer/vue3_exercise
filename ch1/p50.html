@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>vue exercise</title>
+        <meta charset="utf-8">
+
+        <style type="text/css"></style>
+    </head>
+    <body>
+        <div id="app">
+            <p>Count: {{ count }}</p>
+            <button v-on:click="plus">Plus</button>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                        count: 0
+                    }
+                },
+                methods: {
+                    plus() {
+                        this.count++;
+                    }
+                }
+            }).mount('#app')
+        </script>
+    </body>
+</html>

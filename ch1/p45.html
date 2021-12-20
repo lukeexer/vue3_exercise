@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>vue exercise</title>
+    </head>
+    <body>
+        <div id="app">
+            <div v-text="text">hello</div>
+            <div>{{ text }}</div>
+            <div v-html="tags">Hi</div>
+            <div v-once>{{ text }}</div>
+            <div v-pre>{{ text }}</div>
+        </div>
+
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data () {
+                    return {
+                        text: '008JS',
+                        tags: '<h1>Hello</h1>'
+                    }
+                }
+            }).mount('#app');
+
+            vm.$data.text = 'good';
+        </script>
+    </body>
+</html>

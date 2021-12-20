@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>vue exercise</title>
+    </head>
+    <body>
+        <div id="app">
+            <p v-bind:id="customId"></p>
+            <button :disabled="isBtnDisabled">Click Me!</button>
+        </div>
+
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data () {
+                    return {
+                        customId: 'item-id-1',
+                        isBtnDisabled: true
+                    }
+                }
+            }).mount('#app');
+        </script>
+    </body>
+</html>

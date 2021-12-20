@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>vue exercise</title>
+    </head>
+    <body>
+        <div id="app">
+            <p>總金額共 {{ subtotalComputed }} 元</p>
+            <p>總金額共 {{ subtotalComputed }} 元</p>
+            <p>總金額共 {{ subtotalComputed }} 元</p>
+
+            <p>總金額共 {{ subtotalMethods() }} 元</p>
+            <p>總金額共 {{ subtotalMethods() }} 元</p>
+            <p>總金額共 {{ subtotalMethods() }} 元</p>
+        </div>
+
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data () {
+                    return {
+                        price: 100,
+                        quantity: 10
+                    }
+                },
+                methods: {
+                    subtotalMethods() {
+                        console.log('methods');
+                        //return this.price * this.quantity;
+                        return 100 * 100;
+                    }
+                },
+                computed: {
+                    subtotalComputed() {
+                        console.log('computed');
+                        //return this.quantity * this.price;
+                        return 100 * 100;
+                    }
+                }
+            }).mount('#app');
+        </script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>vue exercise</title>
+        <meta charset="utf-8">
+
+        <style type="text/css"></style>
+    </head>
+    <body>
+        <div id="app">
+            <input type="text"
+                v-model.trim="msg"
+                @keydown.enter.exact="addToMessages" />
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                        msg: ''
+                    }
+                },
+                methods: {
+                    addToMessages() {
+                        console.log("called!");
+                    }
+                }
+            }).mount('#app')
+        </script>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>vue exercise</title>
+        <meta charset="utf-8">
+
+        <style type="text/css"></style>
+    </head>
+    <body>
+        <div id="app">
+            <div v-if="isShow">v-if</div>
+            <div v-show="isShow">v-show</div>
+
+            <div v-if="count === 0">Block A</div>
+            <div v-else-if="count < 5">Block B</div>
+            <div v-else>Block C</div>
+
+            <template v-if="value ==='A'">
+                <h1>Title A</h1>
+            </template>
+
+            <template v-if="value ==='B'">
+                <h1>Title B</h1>
+            </template>
+
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                        isShow: false,
+                        count: 10,
+                        value: 'B'
+                    }
+                }
+            }).mount('#app')
+        </script>
+    </body>
+</html>

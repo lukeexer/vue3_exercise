@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>vue exercise</title>
+    </head>
+    <body>
+        <div id="app">
+            {{ name }} 好棒棒!
+        </div>
+        <div id="app2">
+            {{ name }} 好棒棒!
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const dataObj = {
+                name: '008JS'
+            };
+
+            const vm1 = Vue.createApp({
+                data () {
+                    return { ...dataObj }
+                }
+            }).mount('#app');
+
+            const vm2 = Vue.createApp({
+                data () {
+                    return { ...dataObj }
+                }
+            }).mount('#app2');
+
+            vm1.$data.name = '阿不就';
+        </script>
+    </body>
+</html>

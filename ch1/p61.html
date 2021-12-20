@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>vue exercise</title>
+        <meta charset="utf-8">
+
+        <style type="text/css"></style>
+    </head>
+    <body>
+        <div id="app">
+            <template v-if="loginType === 'username'">
+                <label>Username</label>
+                <input placeholder="Enter your username" key="username" />
+            </template>
+
+            <template v-else>
+                <label>Email</label>
+                <input placeholder="Enter your email address" key="email" />
+            </template>
+            <button @click="loginType = 'username'">By Username</button>
+            <button @click="loginType = ''">By Default</button>
+
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                        loginType: 'username'
+                    }
+                }
+            }).mount('#app')
+        </script>
+    </body>
+</html>

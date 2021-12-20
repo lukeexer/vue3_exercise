@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>vue exercise</title>
+    </head>
+    <body>
+        <div id="app">
+            {{ name }} 好棒棒!
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data () {
+                    return {
+                        name: '008JS'
+                    }
+                }
+            });
+
+            vm.mount('#app')
+        </script>
+    </body>
+</html>

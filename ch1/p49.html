@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>vue exercise</title>
+
+        <style type="text/css"></style>
+    </head>
+    <body>
+        <div id="app">
+            <input type="text" v-model.trim="message" :style="msgStyle" />
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data () {
+                    return {
+                        message: ''
+                    }
+                },
+                computed: {
+                    isValid() {
+                        return this.message.length <= 10;
+                    },
+                    msgStyle() {
+                        return {
+                            'border': this.isValid ? '' : 'red solid 1px',
+                            'color': this.isValid ? '' : 'red'
+                        };
+                    }
+                }
+            });
+
+            vm.mount('#app')
+        </script>
+    </body>
+</html>

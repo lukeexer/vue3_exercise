@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>vue exercise</title>
+
+        <style type="text/css">
+            .error {
+                border: red solid 1px;
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <input type="text" v-model.trim="message" v-bind:class="{ 'error': message.length > 10 }" />
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data () {
+                    return {
+                        message: ''
+                    }
+                }
+            });
+
+            vm.mount('#app')
+        </script>
+    </body>
+</html>

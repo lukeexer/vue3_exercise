@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>vue exercise</title>
+        <meta charset="utf-8">
+
+        <style type="text/css"></style>
+    </head>
+    <body>
+        <div id="app">
+            <!-- It didn't work. -->
+            <div class="outer" @click="alert('Outer')">
+                <span>Outer</span>
+                <div class="inner" @click="alert('Inner')">Inner</div>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                        count: 0
+                    }
+                }
+            }).mount('#app')
+        </script>
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>vue exercise</title>
+    </head>
+    <body>
+        <div id="app">
+            <input v-model="message" placeholder="edit me" />
+            <p>Message is: {{ message }}</p>
+
+            <textarea v-model="message2" placeholder="add multiple lines"></textarea>
+            <p><span>Multiline message is: {{ message2 }}</span></p>
+
+            <div>
+                <input type="radio" id="one" value="1" v-model="picked" />
+                <label for="one">One</label>
+            </div>
+            <div>
+                <input type="radio" id="two" value="2" v-model="picked" />
+                <label for="two">Two</label>
+            </div>
+            <span>Picked: {{ picked }}</span>
+
+            <input type="checkbox" id="jack" value="Jack" v-model="checkNames" />
+            <label for="Jack">Jack</label>
+            <input type="checkbox" id="john" value="John" v-model="checkNames" />
+            <label for="John">John</label>
+            <input type="checkbox" id="mike" value="Mike" v-model="checkNames" />
+            <label for="Mike">Mike</label>
+            <input type="checkbox" id="mary" value="Mary" v-model="checkNames" />
+            <label for="Mary">Mary</label>
+            <p>Check Names: {{ checkNames }}</p>
+
+            <input type="checkbox" id="checkbox" v-model="isChecked" />
+            <label for="checkbox">Status: {{ isChecked }}</label>
+
+            <br />
+            <select v-model="selected">
+                <option disabled value="">請選擇</option>
+                <option value="台北市">台北市</option>
+                <option value="新竹市">新竹市</option>
+                <option value="基隆市">基隆市</option>
+            </select>
+            <p>Selected: {{ selected || '未選擇' }}</p>
+        </div>
+
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data () {
+                    return {
+                        message: 'Hello!',
+                        message2: 'Multiline Hello!',
+                        picked: 1,
+                        checkNames: [],
+                        isChecked: true,
+                        selected: ''
+                    }
+                }
+            }).mount('#app');
+        </script>
+    </body>
+</html>

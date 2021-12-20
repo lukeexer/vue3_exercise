@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>vue exercise</title>
+    </head>
+    <body>
+        <div id="app">
+            單價： {{ price }}
+            數量： {{ quantity }}
+            金額總計： {{ price * quantity }} 元
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data () {
+                    return {
+                        price: 100, 
+                        quantity: 10
+                    }
+                }
+            });
+
+            vm.mount('#app')
+        </script>
+    </body>
+</html>
