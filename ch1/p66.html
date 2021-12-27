@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>vue exercise</title>
+        <meta charset="utf-8">
+
+        <style type="text/css"></style>
+    </head>
+    <body>
+        <div id="app">
+            <template v-for="i in evenNumbers">
+                    <div>{{i}}</div>                
+            </template>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                        numbers: [1, 2, 3, 4, 5]
+                    }
+                },
+                computed: {
+                    evenNumbers() {
+                        return this.numbers.filter(number => number % 2 ===0);
+                    }
+                }
+            }).mount('#app')
+        </script>
+    </body>
+</html>

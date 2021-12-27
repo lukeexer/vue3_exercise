@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>vue exercise</title>
+        <meta charset="utf-8">
+
+        <style type="text/css"></style>
+    </head>
+    <body>
+        <div id="app">
+            <ul>
+                <li v-for="(val, key, index) in book">{{index}} / {{key}} / {{val}}</li>
+            </ul>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                        book: {
+                            title: '008js',
+                            author: 'Luke',
+                            publishAt: '2019/09'
+                        }
+                    }
+                }
+            }).mount('#app')
+        </script>
+    </body>
+</html>

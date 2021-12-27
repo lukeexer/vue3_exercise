@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>vue exercise</title>
+        <meta charset="utf-8">
+
+        <style type="text/css"></style>
+    </head>
+    <body>
+        <div id="app">
+            <ul>
+                <li v-for="(item, index) in arr">{{index}} / {{item}}</li>
+            </ul>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                        arr: ['008', 'JS', 'is', 'awesome']
+                    }
+                }
+            }).mount('#app')
+        </script>
+    </body>
+</html>

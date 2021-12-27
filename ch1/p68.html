@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>vue exercise</title>
+        <meta charset="utf-8">
+
+        <style type="text/css"></style>
+    </head>
+    <body>
+        <div id="app">
+            <h1>Todo</h1>
+            <ul>
+                <li v-for="i in todoList" :key="i.id">
+                    <label><input v-model="i.isDone" type="checkbox">{{i.title}}</label>
+                </li>
+            </ul>
+            <h1>Done</h1>
+            <ul>
+                <li v-for="i in doneList" :key="i.id">
+                    <label><input v-model="i.isDone" type="checkbox">{{i.title}}</label>
+                </li>
+            </ul>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                        lists: [
+                            {
+                                id: '001',
+                                title: 'opt1',
+                                isDone: false
+                            },
+                            {
+                                id: '002',
+                                title: 'opt2',
+                                isDone: false
+                            },
+                            {
+                                id: '003',
+                                title: 'opt3',
+                                isDone: false
+                            }
+                        ]
+                    }
+                },
+                computed: {
+                    todoList() {
+                        return this.lists.filter(d => !d.isDone);
+                    },
+                    doneList() {
+                        return this.lists.filter(d => d.isDone);
+                    }
+                }
+            }).mount('#app')
+        </script>
+    </body>
+</html>

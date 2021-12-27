@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>vue exercise</title>
+        <meta charset="utf-8">
+
+        <style type="text/css"></style>
+    </head>
+    <body>
+        <div id="app">
+            <div>
+                <div v-for="m in messages">{{m}}</div>
+            </div>
+            <input
+                type="text"
+                placeholder="Please input any characters and press Enter"
+                v-model.trim="msg"
+                @keydown.enter="addToMessages">
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                        msg: '',
+                        messages: ['Hello', 'Vue.js', 'great']
+                    }
+                },
+                methods: {
+                    addToMessages() {
+                        this.messages.push(this.msg);
+                        this.msg = '';
+                    }
+                },
+                watch: {
+                    msg(val, oldValue) {
+                        console.log(`new msg: ${val}`);
+                        console.log(`old msg: ${oldValue}`);
+                    }
+                }
+            }).mount('#app');
+        </script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>vue exercise</title>
+        <meta charset="utf-8">
+
+        <style type="text/css"></style>
+    </head>
+    <body>
+        <div id="app">
+            
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                        msg: 'Hello Vue.js!'
+                    }
+                },
+                created() {
+                    console.log('created');
+                },
+                mounted() {
+                    console.log('mounted');
+                },
+                unmounted() {
+                    console.log('unmounted');
+                }
+            });
+            
+            vm.mount('#app');
+
+            vm.unmount();
+        </script>
+    </body>
+</html>
