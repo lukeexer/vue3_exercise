@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>vue exercise</title>
+        <meta charset="utf-8">
+
+        <style type="text/css"></style>
+    </head>
+    <body>
+        <div id="app">
+            <h1>{{msg}}</h1>
+            <my-component v-bind:parent-msg="msg" v-bind:parent-msg2="msg2"></my-component>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                        msg: 'this is msg from parent',
+                        msg2: 'this is msg2 from parent'
+                    }
+                }
+            });
+
+            vm.component('my-component', {
+                template: `
+                    <div>
+                        <div>msg comes from prop: {{parentMsg}}</div>
+                        <div>msg2 comes from prop: {{parentMsg2}}</div>
+                        <div>msg comes from myself: {{msg}}</div>
+                    </div>`,
+                data() {
+                    return {
+                        msg: 'this is msg from child'
+                    }
+                },
+                props: ["parentMsg", "parentMsg2"]
+            });
+
+            vm.mount('#app');
+        </script>
+    </body>
+</html>

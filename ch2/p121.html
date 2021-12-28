@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>vue exercise</title>
+        <meta charset="utf-8">
+
+        <style type="text/css"></style>
+    </head>
+    <body>
+        <div id="app">            
+            <h1>{{message}}</h1>
+            <custom-input v-model="message"></custom-input>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {                       
+                        message: "Hello vue!"
+                    }
+                }
+            });
+
+            vm.component('custom-input', {
+                template: `
+                    <input
+                     :value="modelValue"
+                     @input="$emit('update:modelValue', $event.target.value)">
+
+                `,
+                props: ['modelValue']
+            });
+
+            vm.mount('#app');
+        </script>
+    </body>
+</html>

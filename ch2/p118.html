@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>vue exercise</title>
+        <meta charset="utf-8">
+
+        <style type="text/css"></style>
+    </head>
+    <body>
+        <div id="app">            
+            <ul v-for="book in books" :key="book.id">
+                <li>{{book.name}}</li>
+                <li>{{book.author}}</li>
+            </ul>
+
+            <my-component v-for="(book, idx) in books" :key="idx" v-bind="book" @update="updateInfo"></my-component>            
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {                       
+                        books: [
+                            {
+                                id: '001',
+                                name: 'book1',
+                                author: 'Luke1'                        
+                            },
+                            {
+                                id: '002',
+                                name: 'book2',
+                                author: 'Luke2'
+                            }
+                        ]    
+                    }
+                },
+                methods: {
+                    updateInfo(val) {
+                        const idx = this.books.findIndex(d => d. id === val.id);
+                        this.books[idx] = val;
+                    }
+                }
+            });
+
+            vm.component('my-component', {
+                template: `
+                    <div>
+                        <div>book name: <input type="text" v-model="bookInfo.name"></div>
+                        <div>book author: <input type="text" v-model="bookInfo.author"></div>                         
+                    </div>`,
+                data() {
+                    return {
+                        bookInfo: {
+                            id: this.id,
+                            name: this.name,
+                            author: this.author
+                        }
+                    }
+                },
+                props: ['id', 'name', 'author'],
+                watch: {
+                    bookInfo: {
+                        deep: true,
+                        handler(val) {
+                            this.$emit('update', val);
+                        }
+                    }
+                }
+            });
+
+            vm.mount('#app');
+        </script>
+    </body>
+</html>

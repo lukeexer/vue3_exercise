@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>vue exercise</title>
+        <meta charset="utf-8">
+
+        <style type="text/css"></style>
+    </head>
+    <body>
+        <div id="app">
+            <h1>test component</h1>
+            <my-component></my-component>
+            <my-component></my-component>
+            <my-component></my-component>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({});
+
+            vm.component('my-component', {
+                template: `<div>{{msg}} Vue 3</div>`,
+                data() {
+                    return {
+                        msg: 'hello'
+                    }
+                }
+            });
+
+            vm.mount('#app');
+        </script>
+    </body>
+</html>

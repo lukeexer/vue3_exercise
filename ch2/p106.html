@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>vue exercise</title>
+        <meta charset="utf-8">
+
+        <style type="text/css"></style>
+    </head>
+    <body>
+        <div id="app">
+            <h1>{{msg}}</h1>
+            <ul v-for="book in books" :key="book.id">
+                <li>{{book.name}}</li>
+                <li>{{book.author}}</li>
+            </ul>
+
+            <my-component v-for="book in books" :key="book.id" :book-info="book"></my-component>            
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                        msg: 'this is msg from parent',
+                        books: [
+                            {
+                                id: '001',
+                                name: 'book1',
+                                author: 'Luke1'                        
+                            },
+                            {
+                                id: '002',
+                                name: 'book2',
+                                author: 'Luke2'
+                            }
+                        ]    
+                    }
+                }
+            });
+
+            vm.component('my-component', {
+                template: `
+                    <div>
+                        <div>book name: <input type="text" v-model="bookInfo.name"></div>
+                        <div>book author: <input type="text" v-model="bookInfo.author"></div>                         
+                    </div>`,
+                data() {
+                    return {
+                        msg: 'this is msg from child'
+                    }
+                },
+                props: {
+                    bookInfo: {
+                        type: Object
+                    }
+                }
+            });
+
+            vm.mount('#app');
+        </script>
+    </body>
+</html>

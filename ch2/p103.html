@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>vue exercise</title>
+        <meta charset="utf-8">
+
+        <style type="text/css"></style>
+    </head>
+    <body>
+        <div id="app">
+            <h1>{{msg}}</h1>
+            <my-component v-bind:props-number="123"></my-component>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                        msg: 'this is msg from parent'                        
+                    }
+                }
+            });
+
+            vm.component('my-component', {
+                template: `
+                    <div>
+                        <div>msg comes from prop: {{propsNumber}}</div>                        
+                    </div>`,
+                data() {
+                    return {
+                        msg: 'this is msg from child'
+                    }
+                },
+                props: {
+                    'props-number': {
+                        required: true,
+                        default: 456,
+                        type: [String, Number],
+                        validator: value => value > 0
+                    },
+                    'shomething': {
+                        type: Array,
+                        default: [1, 2, 3]
+                    },
+                    'shomething2': {
+                        type: Object,
+                        default: {
+                            msg: 'hello'
+                        }
+                    }
+                }
+            });
+
+            vm.mount('#app');
+        </script>
+    </body>
+</html>
