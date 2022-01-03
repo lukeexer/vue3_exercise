@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>vue exercise</title>
+        <meta charset="utf-8">
+
+        <style type="text/css"></style>
+    </head>
+    <body>
+        <div id="app">            
+            <button
+                v-for="tab in tabs" 
+                :key="tab"                
+                @click="currentTab = tab">
+                {{ tab }}
+            </button>
+            <tab-home v-if="currentTab ==='Home'"></tab-home>
+            <tab-posts v-if="currentTab === 'Posts'"></tab-posts>
+            <tab-archive v-if="currentTab === 'Archive'"></tab-archive>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {                       
+                        currentTab: 'Home',
+                        tabs: ['Home', 'Posts', 'Archive']
+                    }
+                }
+            });
+
+            vm.component('tab-home', {
+                template: `<div>Home component</div>`                
+            });
+
+            vm.component('tab-posts', {
+                template: `<div>Posts component</div>`                
+            });
+
+            vm.component('tab-archive', {
+                template: `<div>Archive component</div>`                
+            });
+
+            vm.mount('#app');
+        </script>
+    </body>
+</html>

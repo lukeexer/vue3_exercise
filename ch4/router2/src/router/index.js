@@ -6,9 +6,14 @@ import NotFound from '../views/NotFound.vue'
 
 const routes = [
   {
+    path: '/home',
+    redirect: '/'
+  },
+  {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    alias: '/home1'
   },
   {
     path: '/about',
