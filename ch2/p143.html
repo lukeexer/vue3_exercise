@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>vue exercise</title>
+        <meta charset="utf-8">
+
+        <style type="text/css"></style>
+    </head>
+    <body>
+        <div id="app">
+            <h1>{{ msg }}</h1>
+
+            <custom-component>
+                {{ msg }}
+            </custom-component>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {                       
+                        msg: 'Parent!'
+                    }
+                },
+               
+            });
+
+            vm.component('custom-component', {
+                template: `
+                    <div>
+                        Hello!
+                        <div>
+                            <slot>Default Content</slot>
+                        </div>
+                    </div>`,
+                data() {
+                    return {
+                        msg: 'Child!'
+                    }
+                }
+            });
+
+            vm.mount('#app');
+        </script>
+    </body>
+</html>
